@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,11 +7,22 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  @Input() tableConfig: any = {};
-  data: Array<any> = [];
+  @Input() config: any = {};
+  @Input() data: any = [];
+  @Output() refresh = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSortChange(sort) {
+    debugger;
+    this.config.sort = sort;
+    this.refreshData();
+  }
+
+  refreshData() {
+    this.refresh.emit(this.config);
   }
 
 }

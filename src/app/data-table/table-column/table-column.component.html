@@ -1,0 +1,6 @@
+<div [ngClass]="{'clickable': sort}" (click)="onColumnClick()">
+  <ng-content></ng-content>
+  <span *ngIf="sort">
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+  </span>
+</div>
